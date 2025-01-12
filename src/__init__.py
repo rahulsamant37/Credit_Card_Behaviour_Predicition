@@ -17,4 +17,4 @@ logging.basicConfig(
     ]
 )
 
-logger=logging.getLogger("House-Predictionlogger")
+logger=logging.getLogger("Credit-Card-Behaviour-logger")
