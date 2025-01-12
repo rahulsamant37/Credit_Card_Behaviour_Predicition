@@ -1,6 +1,6 @@
 from src.constants import *
 from src.utils.common import read_yaml, create_directories
-from src.entity.config_entity import (DataIngestionConfig)
+from src.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
 
 
 class ConfigurationManager:
@@ -25,3 +25,18 @@ class ConfigurationManager:
             csv_dir=[Path(dir_) for dir_ in config.csv_dir]
         )
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+        schema = self.schema.COLUMNS
+
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            STATUS_FILE=config.STATUS_FILE,
+            csv_dir = config.csv_dir,
+            all_schema=schema
+        )
+
+        return data_validation_config
