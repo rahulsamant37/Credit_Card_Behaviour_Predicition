@@ -1,12 +1,16 @@
-import os
 import sys
 import logging
+from pathlib import Path
 
-logging_str="[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
+# Define log directory and file path
+log_dir = Path("logs")
+log_filepath = log_dir / "logging.log"
 
-log_dir="logs"
-log_filepath=os.path.join(log_dir,"logging.log")
-os.makedirs(log_dir,exist_ok=True)
+# Ensure the log directory exists
+log_dir.mkdir(parents=True, exist_ok=True)
+
+# Set up logging configuration
+logging_str = "[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -17,4 +21,5 @@ logging.basicConfig(
     ]
 )
 
-logger=logging.getLogger("Credit-Card-Behaviour-logger")
+# Get logger instance
+logger = logging.getLogger("Credit-Card-Behaviour-logger")
