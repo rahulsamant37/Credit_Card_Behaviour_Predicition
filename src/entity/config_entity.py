@@ -8,3 +8,10 @@ class DataIngestionConfig:
     source_URL: List[str]
     local_data_file: Path
     csv_dir: List[Path]
+
+@dataclass
+class DataValidationConfig:
+    root_dir: Path
+    STATUS_FILE: str
+    csv_dir: Path
+    all_schema: dict
