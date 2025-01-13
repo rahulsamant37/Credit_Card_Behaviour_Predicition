@@ -15,3 +15,8 @@ class DataValidationConfig:
     STATUS_FILE: str
     csv_dir: Path
     all_schema: dict
+
+@dataclass
+class DataTransformationConfig:
+    root_dir:Path
+    data_path: Path
